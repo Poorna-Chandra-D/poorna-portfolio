@@ -1,0 +1,186 @@
+[
+    {
+        "name": "CCNA Certified",
+        "icon": "https://img.icons8.com/color/48/000000/certificate.png"
+    },
+    {
+        "name": "Cisco Routing & Switching",
+        "icon": "https://img.icons8.com/color/48/000000/cisco-router.png"
+    },
+    {
+        "name": "Python",
+        "icon": "https://img.icons8.com/color/48/000000/python--v1.png"
+    },
+    {
+        "name": "CI/CD Pipelines",
+        "icon": "https://img.icons8.com/color/48/000000/workflow.png"
+    },
+    {
+        "name": "Infrastructure Design",
+        "icon": "https://img.icons8.com/color/48/000000/server.png"
+    },
+    {
+        "name": "MCP",
+        "icon": "https://img.icons8.com/color/48/000000/cloud-sync--v1.png"
+    },
+    {
+        "name": "C",
+        "icon": "https://img.icons8.com/color/48/000000/c-programming.png"
+    },
+    {
+        "name": "Network Architecture",
+        "icon": "https://img.icons8.com/color/48/000000/network.png"
+    },
+    {
+        "name": "VoIP Technology",
+        "icon": "https://img.icons8.com/color/48/000000/phone.png"
+    },
+    {
+        "name": "VLAN Configuration",
+        "icon": "https://img.icons8.com/color/48/000000/networking-manager.png"
+    },
+    {
+        "name": "WiFi Optimization",
+        "icon": "https://img.icons8.com/color/48/000000/wifi-router.png"
+    },
+    {
+        "name": "Network Security",
+        "icon": "https://img.icons8.com/color/48/000000/shield.png"
+    },
+    {
+        "name": "TCP/IP Protocols",
+        "icon": "https://img.icons8.com/color/48/000000/code.png"
+    },
+    {
+        "name": "RPA Automation",
+        "icon": "https://img.icons8.com/color/48/000000/robot-2.png"
+    },
+    {
+        "name": "Network Automation",
+        "icon": "https://img.icons8.com/color/48/000000/settings.png"
+    },
+    {
+        "name": "Cloud Technologies",
+        "icon": "https://img.icons8.com/color/48/000000/cloud.png"
+    },
+    {
+        "name": "AWS",
+        "icon": "https://img.icons8.com/color/48/000000/amazon-web-services.png"
+    },
+    {
+        "name": "Linux",
+        "icon": "https://img.icons8.com/color/48/000000/linux--v1.png"
+    },
+    {
+        "name": "Windows Server",
+        "icon": "https://img.icons8.com/color/48/000000/windows-logo.png"
+    },
+    {
+        "name": "DNS Management",
+        "icon": "https://img.icons8.com/color/48/000000/dns.png"
+    },
+    {
+        "name": "DHCP",
+        "icon": "https://img.icons8.com/color/48/ethernet-on.png"
+    },
+    {
+        "name": "Firewall Management",
+        "icon": "https://img.icons8.com/color/48/000000/firewall.png"
+    },
+    {
+        "name": "AI & Machine Learning",
+        "icon": "https://img.icons8.com/color/48/000000/artificial-intelligence.png"
+    },
+    {
+        "name": "Elasticsearch",
+        "icon": "https://img.icons8.com/color/48/000000/elasticsearch.png"
+    },
+    {
+        "name": "Agile/Scrum",
+        "icon": "https://img.icons8.com/color/48/000000/tasks.png"
+    },
+    {
+        "name": "Git & Version Control",
+        "icon": "https://img.icons8.com/color/48/000000/git.png"
+    },
+    {
+        "name": "Node.js",
+        "icon": "https://img.icons8.com/color/48/000000/nodejs.png"
+    },
+    {
+        "name": "Docker",
+        "icon": "https://img.icons8.com/color/48/000000/docker.png"
+    },
+    {
+        "name": "Kubernetes",
+        "icon": "https://img.icons8.com/color/48/000000/kubernetes.png"
+    },
+    {
+        "name": "MongoDB",
+        "icon": "https://img.icons8.com/color/48/000000/mongodb.png"
+    },
+    {
+        "name": "SQL",
+        "icon": "https://img.icons8.com/color/48/000000/mysql-logo.png"
+    },
+    {
+        "name": "JavaScript",
+        "icon": "https://img.icons8.com/color/48/000000/javascript--v1.png"
+    },
+    {
+        "name": "System Design",
+        "icon": "https://img.icons8.com/color/48/000000/blueprint.png"
+    },
+    {
+        "name": "Technical Documentation",
+        "icon": "https://img.icons8.com/color/48/000000/document.png"
+    },
+    {
+        "name": "ReactJS",
+        "icon": "https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/000000/external-react-a-javascript-library-for-building-user-interfaces-logo-color-tal-revivo.png"
+    },
+    {
+        "name": "ExpressJS",
+        "icon": "https://img.icons8.com/fluency/48/000000/node-js.png"
+    },
+    {
+        "name": "REST API Development",
+        "icon": "https://img.icons8.com/color/48/000000/api-settings.png"
+    },
+    {
+        "name": "Database Design",
+        "icon": "https://img.icons8.com/color/48/000000/database.png"
+    },
+    {
+        "name": "API Integration",
+        "icon": "https://img.icons8.com/color/48/000000/api.png"
+    },
+    {
+        "name": "Microservices",
+        "icon": "https://img.icons8.com/color/48/000000/layers.png"
+    },
+    {
+        "name": "DevOps",
+        "icon": "https://img.icons8.com/color/48/000000/rocket--v1.png"
+    },
+    {
+        "name": "Postman",
+        "icon": "https://img.icons8.com/dusk/48/000000/postman-api.png"
+    },
+    {
+        "name": "Jira",
+        "icon": "https://img.icons8.com/color/48/000000/jira.png"
+    },
+    {
+        "name": "Confluence",
+        "icon": "https://img.icons8.com/color/48/000000/confluence.png"
+    },
+    {
+        "name": "Figma",
+        "icon": "https://img.icons8.com/color/48/000000/figma--v1.png"
+    },
+    {
+        "name": "n8n",
+        "icon": "https://n8n.io/favicon-32x32.png"
+    }
+]

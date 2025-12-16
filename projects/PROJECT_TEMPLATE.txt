@@ -1,0 +1,15 @@
+TEMPLATE for adding new projects to projects.json:
+
+,{
+  "name": "Project Name",
+  "desc": "Project description with key accomplishments and technologies used.",
+  "image": "image-filename-without-extension",
+  "category": "network|mern|android|lamp|basicweb",
+  "links": {
+    "view": "https://project-demo-url.com",
+    "code": "https://github.com/username/repo"
+  }
+}
+
+Note: Add a comma before the opening brace when adding to the array.
+Place your project images in: assets/images/projects/

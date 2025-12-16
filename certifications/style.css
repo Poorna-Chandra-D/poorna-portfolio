@@ -1,0 +1,9 @@
+/* Page-specific tweaks to align with Projects style */
+/* Prevent header overlap so heading is visible */
+#certifications {
+  padding-top: 8rem; /* header height (6.5rem) + breathing space */
+}
+
+#certifications .box-container {
+  margin-top: 2rem;
+}
