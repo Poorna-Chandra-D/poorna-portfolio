@@ -10,6 +10,16 @@
     }
   },
   {
+    "name": "Real-Time Network Monitoring & Alerting Platform",
+    "desc": "End-to-end network monitoring solution with real-time data collection, alerting, and interactive analytics dashboard for comprehensive infrastructure insights.",
+    "image": "monitoring",
+    "category": "network",
+    "links": {
+      "view": "#",
+      "code": "https://github.com/Poorna-Chandra-D/Network-Monitoring-System-SNMP"
+    }
+  },
+  {
     "name": "Pi-hole Network Ad-Blocking & Privacy Solution",
     "desc": "Configured Pi-hole with Unbound DNS for network-wide ad/malware blocking. Set up Raspberry Pi OS, Achieved ~90% ad-blocking.",
     "image": "pihole",
@@ -47,16 +57,6 @@
     "links": {
       "view": "#",
       "code": "#"
-    }
-  },
-  {
-    "name": "10 Days of Code - VVCE",
-    "desc": "Letter of Appreciation from Vidyavardhaka College of Engineering Mysuru for #10daysofcodevvce organized in association with GitHub and HackerRank. Great event for community engagement and skill development.",
-    "image": "letter-of-appreciation",
-    "category": "achievement",
-    "links": {
-      "view": "https://www.linkedin.com/posts/poorna-chandra-dinesh_10daysofcodevvce-hackerrank-github-activity-6710151805319340033-IxYL?utm_source=share&utm_medium=member_desktop&rcm=ACoAACdtZcsBxPwszKMMRCu1XnMrV_6pEheFMYw",
-      "code": "https://github.com/Poorna-Chandra-D/10daysofcodevvce"
     }
   }
 ]
