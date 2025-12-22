@@ -42,8 +42,13 @@
                     linkedIn: document.getElementById('visitor-linkedin').value || null
                 };
                 closeModal();
-                window.guestbookData = visitorData; // Store globally for visitor-tracker
+                
+                // Store globally and trigger guestbook update notification
+                window.guestbookData = visitorData;
                 console.log('📋 Guestbook data captured:', visitorData);
+                
+                // Trigger custom event so visitor-tracker can send update
+                window.dispatchEvent(new CustomEvent('guestbookSigned', { detail: visitorData }));
             });
 
             // Handle close button

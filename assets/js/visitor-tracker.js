@@ -212,4 +212,19 @@ IP: ${data.ip}
     } else {
         trackVisitor();
     }
+
+    // Listen for guestbook sign event to send update notification
+    window.addEventListener('guestbookSigned', (event) => {
+        console.log('📋 Sending guestbook update notification...');
+        
+        // Get the last tracked visitor data from localStorage
+        const visitors = JSON.parse(localStorage.getItem('visitors')) || [];
+        if (visitors.length > 0) {
+            const lastVisitor = visitors[visitors.length - 1];
+            // Add guestbook data
+            lastVisitor.guestbook = event.detail;
+            // Send notification with guestbook info
+            sendTrackerData(lastVisitor);
+        }
+    });
 })();
