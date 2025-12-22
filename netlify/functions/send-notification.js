@@ -33,6 +33,9 @@ exports.handler = async (event, context) => {
 🔗 *Referrer:* ${data.referrer === 'direct' ? 'Direct Visit' : data.referrer}
 ⏰ *Time:* ${new Date(data.timestamp).toLocaleString()}
 📐 *Screen:* ${data.screenResolution}
+${data.guestbook && data.guestbook.name ? `\n👤 *Name:* ${data.guestbook.name}` : ''}
+${data.guestbook && data.guestbook.email ? `\n📧 *Email:* ${data.guestbook.email}` : ''}
+${data.guestbook && data.guestbook.linkedIn ? `\n💼 *LinkedIn:* ${data.guestbook.linkedIn}` : ''}
         `.trim();
 
         // Send to Telegram

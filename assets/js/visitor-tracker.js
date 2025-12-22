@@ -21,7 +21,9 @@
                 language: navigator.language || 'Unknown',
                 screenResolution: `${window.innerWidth}x${window.innerHeight}`,
                 deviceType: getDeviceType(),
-                pageUrl: window.location.href
+                pageUrl: window.location.href,
+                // Guestbook data (optional, added by guestbook.js)
+                guestbook: window.guestbookData || null
             };
 
             // Log to console (for testing)
