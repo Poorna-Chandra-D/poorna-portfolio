@@ -28,7 +28,7 @@ const CONFIG = {
 
 // Function to validate configuration
 function validateConfig() {
-    if (CONFIG.telegram.enabled && CONFIG.telegram.botToken === '8249128073:AAFBpHGmlaQrOWhwc6mo4kDKR0Z8GhS1yhg') {
+    if (CONFIG.telegram.enabled && CONFIG.telegram.botToken === 'Your_Telegram_bot_Tocken) {
         console.warn('⚠️ Telegram is enabled but not configured. Update botToken in config.js');
     }
     if (CONFIG.discord.enabled && CONFIG.discord.webhookUrl === 'YOUR_DISCORD_WEBHOOK_URL') {
