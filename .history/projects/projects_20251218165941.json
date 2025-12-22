@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Legacy Application Modernization",
+    "desc": "Developed AI-powered platform using Langchain to automate PHP-to-NodeJS conversions with secure file uploads.",
+    "image": "legacy-modernization",
+    "category": "software",
+    "links": {
+      "view": "https://vigilant-disco-client.vercel.app/",
+      "code": "https://github.com/orgs/Legacy-Application-Modernization/repositories"
+    }
+  },
+  {
+    "name": "Real-Time Network Monitoring & Alerting Platform",
+    "desc": "End-to-end network monitoring solution with real-time data collection, alerting, and interactive analytics dashboard for comprehensive infrastructure insights.",
+    "image": "monitoring",
+    "category": "network",
+    "links": {
+      "view": "#",
+      "code": "https://github.com/Poorna-Chandra-D/Network-Monitoring-System-SNMP"
+    }
+  },
+  {
+    "name": "Pi-hole Network Ad-Blocking & Privacy Solution",
+    "desc": "Configured Pi-hole with Unbound DNS for network-wide ad/malware blocking. Set up Raspberry Pi OS, Achieved ~90% ad-blocking.",
+    "image": "pihole",
+    "category": "network",
+    "links": {
+      "view": "https://www.linkedin.com/posts/poorna-chandra-dinesh_pihole-raspberrypi-adblock-activity-7382221204763566080-2Uoq?utm_source=share&utm_medium=member_desktop&rcm=ACoAACdtZcsBxPwszKMMRCu1XnMrV_6pEheFMYw",
+      "code": "https://www.linkedin.com/posts/poorna-chandra-dinesh_pihole-raspberrypi-adblock-activity-7382221204763566080-2Uoq?utm_source=share&utm_medium=member_desktop&rcm=ACoAACdtZcsBxPwszKMMRCu1XnMrV_6pEheFMYw"
+    }
+  },
+  {
+    "name": "Aruba S2500-48P Switch Lab & Configuration",
+    "desc": "Hands-on lab with Aruba S2500-48P (48 PoE ports). Configured VLANs, trunk ports, PoE setups, Aruba CLI, role-based access, and QoS.",
+    "image": "aruba-switch",
+    "category": "network",
+    "links": {
+      "view": "https://www.linkedin.com/posts/poorna-chandra-dinesh_networking-networkengineer-aruba-activity-7369908244166733825-z4Kn?utm_source=share&utm_medium=member_desktop&rcm=ACoAACdtZcsBxPwszKMMRCu1XnMrV_6pEheFMYw",
+      "code": "https://www.linkedin.com/posts/poorna-chandra-dinesh_networking-networkengineer-aruba-activity-7369908244166733825-z4Kn?utm_source=share&utm_medium=member_desktop&rcm=ACoAACdtZcsBxPwszKMMRCu1XnMrV_6pEheFMYw"
+    }
+  },
+  {
+    "name": "Enterprise VoIP Migration & ATA Deployment",
+    "desc": "Migrated legacy PBX to Cisco VoIP using ATAs. Configured IP phones, optimized QoS for voice traffic, and maintained endpoint inventory.",
+    "image": "voip-infrastructure",
+    "category": "network",
+    "links": {
+      "view": "#",
+      "code": "#"
+    }
+  },
+  {
+    "name": "Campus Network Modernization & WiFi Optimization",
+    "desc": "Upgraded campus access switches and fiber uplinks. Conducted WiFi surveys, optimized AP placement. Validated Cisco configurations.",
+    "image": "wifi-optimization",
+    "category": "network",
+    "links": {
+      "view": "#",
+      "code": "#"
+    }
+  }
+]

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Tracker | Poorna's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            color: #667eea;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .stat-card .number {
+            font-size: 2.5em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .stat-card .icon {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .visitors-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .visitors-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .visitor-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .visitor-table thead {
+            background: #f8f9fa;
+        }
+
+        .visitor-table th {
+            padding: 15px;
+            text-align: left;
+            color: #667eea;
+            font-weight: 600;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .visitor-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        .visitor-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .badge-success { background: #d4edda; color: #155724; }
+        .badge-info { background: #d1ecf1; color: #0c5460; }
+        .badge-warning { background: #fff3cd; color: #856404; }
+
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #764ba2;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .responsive {
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .stat-card {
+                padding: 20px;
+            }
+
+            .visitor-table {
+                font-size: 0.85em;
+            }
+
+            .visitor-table th, .visitor-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-chart-line"></i> Portfolio Visitor Tracker</h1>
+            <p>Real-time analytics of your portfolio visitors</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-users"></i></div>
+                <h3>Total Visitors</h3>
+                <div class="number" id="totalVisitors">0</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-globe"></i></div>
+                <h3>Unique Countries</h3>
+                <div class="number" id="uniqueCountries">0</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-desktop"></i></div>
+                <h3>Most Used Device</h3>
+                <div class="number" id="mostDevice">-</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-chrome"></i></div>
+                <h3>Most Used Browser</h3>
+                <div class="number" id="mostBrowser">-</div>
+            </div>
+        </div>
+
+        <div class="visitors-section">
+            <h2>Recent Visitors</h2>
+            <div class="controls">
+                <button class="btn btn-primary" onclick="refreshData()">
+                    <i class="fas fa-sync"></i> Refresh
+                </button>
+                <button class="btn btn-danger" onclick="clearData()">
+                    <i class="fas fa-trash"></i> Clear All
+                </button>
+            </div>
+
+            <div class="responsive">
+                <table class="visitor-table" id="visitorTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Timestamp</th>
+                            <th>Location</th>
+                            <th>Browser</th>
+                            <th>Device</th>
+                            <th>Referrer</th>
+                            <th>Language</th>
+                        </tr>
+                    </thead>
+                    <tbody id="visitorBody">
+                        <tr><td colspan="7" class="no-data">No visitor data yet</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadVisitors() {
+            const visitors = JSON.parse(localStorage.getItem('visitors')) || [];
+            displayStats(visitors);
+            displayTable(visitors);
+        }
+
+        function displayStats(visitors) {
+            if (visitors.length === 0) return;
+
+            // Total visitors
+            document.getElementById('totalVisitors').textContent = visitors.length;
+
+            // Unique countries
+            const countries = new Set(visitors.map(v => v.country));
+            document.getElementById('uniqueCountries').textContent = countries.size;
+
+            // Most used device
+            const devices = {};
+            visitors.forEach(v => {
+                devices[v.deviceType] = (devices[v.deviceType] || 0) + 1;
+            });
+            const mostDevice = Object.keys(devices).reduce((a, b) => 
+                devices[a] > devices[b] ? a : b, 'Unknown');
+            document.getElementById('mostDevice').textContent = mostDevice;
+
+            // Most used browser
+            const browsers = {};
+            visitors.forEach(v => {
+                browsers[v.browser] = (browsers[v.browser] || 0) + 1;
+            });
+            const mostBrowser = Object.keys(browsers).reduce((a, b) => 
+                browsers[a] > browsers[b] ? a : b, 'Unknown');
+            document.getElementById('mostBrowser').textContent = mostBrowser;
+        }
+
+        function displayTable(visitors) {
+            const tbody = document.getElementById('visitorBody');
+            
+            if (visitors.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="no-data">No visitor data yet</td></tr>';
+                return;
+            }
+
+            // Display in reverse order (most recent first)
+            const reversedVisitors = [...visitors].reverse();
+            
+            tbody.innerHTML = reversedVisitors.map((visitor, index) => `
+                <tr>
+                    <td>${visitors.length - index}</td>
+                    <td><span class="badge badge-info">${new Date(visitor.timestamp).toLocaleString()}</span></td>
+                    <td>${visitor.city}, ${visitor.country}</td>
+                    <td><span class="badge badge-success">${visitor.browser}</span></td>
+                    <td><span class="badge badge-warning">${visitor.deviceType}</span></td>
+                    <td>${visitor.referrer === 'direct' ? 'Direct Visit' : new URL(visitor.referrer).hostname}</td>
+                    <td>${visitor.language}</td>
+                </tr>
+            `).join('');
+        }
+
+        function refreshData() {
+            loadVisitors();
+            alert('Data refreshed!');
+        }
+
+        function clearData() {
+            if (confirm('Are you sure you want to clear all visitor data? This cannot be undone.')) {
+                localStorage.removeItem('visitors');
+                loadVisitors();
+                alert('All visitor data cleared!');
+            }
+        }
+
+        // Load visitors when page loads
+        window.addEventListener('load', loadVisitors);
+        
+        // Refresh every 5 seconds
+        setInterval(loadVisitors, 5000);
+    </script>
+</body>
+</html>
