@@ -28,8 +28,8 @@ After deployment, add your credentials securely:
 
    | Key | Value |
    |-----|-------|
-   | `TELEGRAM_BOT_TOKEN` | `8249128073:AAFBpHGmlaQrOWhwc6mo4kDKR0Z8GhS1yhg` |
-   | `TELEGRAM_CHAT_ID` | `8456930906` |
+   | `TELEGRAM_BOT_TOKEN` | `Add yours` |
+   | `TELEGRAM_CHAT_ID` | `Add yours` |
 
 4. Click **"Save"**
 5. Go to **Deploys** → **"Trigger deploy"** → **"Clear cache and deploy site"**
