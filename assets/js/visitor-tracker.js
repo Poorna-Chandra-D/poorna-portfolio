@@ -76,16 +76,20 @@
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
+        .then(response => {
+            console.log('📡 Function response status:', response.status);
+            return response.json();
+        })
         .then(result => {
+            console.log('📡 Function response:', result);
             if (result.success) {
                 console.log('✅ Visitor notification sent successfully');
             } else {
-                console.warn('⚠️ Notification failed:', result.error);
+                console.warn('⚠️ Notification failed:', result.error || result);
             }
         })
         .catch(err => {
-            console.log('Notification sent (or pending)');
+            console.error('❌ Error sending notification:', err);
         });
     }
 
