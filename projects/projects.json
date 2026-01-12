@@ -4,6 +4,12 @@
     "desc": "Developed AI-powered platform using Langchain to automate PHP-to-NodeJS conversions with secure file uploads.",
     "image": "legacy-modernization",
     "category": "software",
+    "features": [
+      "AI-powered code conversion from PHP to NodeJS using Langchain",
+      "Secure file upload and processing with validation",
+      "Real-time transformation with error handling"
+    ],
+    "tech": ["Node.js", "Langchain", "React", "Vercel"],
     "links": {
       "view": "https://vigilant-disco-client.vercel.app/",
       "code": "https://github.com/orgs/Legacy-Application-Modernization/repositories"
@@ -11,9 +17,15 @@
   },
   {
     "name": "Real-Time Network Monitoring & Alerting Platform",
-    "desc": "End-to-end network monitoring solution with real-time data collection, alerting, and interactive analytics dashboard for comprehensive infrastructure insights.",
+    "desc": "End-to-end network monitoring solution with real-time data collection, alerting, and interactive analytics dashboard.",
     "image": "monitoring",
     "category": "network",
+    "features": [
+      "Real-time SNMP data collection and processing",
+      "Interactive analytics dashboard with visualizations",
+      "Automated alerting system for network anomalies"
+    ],
+    "tech": ["Python", "SNMP", "Database", "Dashboard"],
     "links": {
       "view": "#",
       "code": "https://github.com/Poorna-Chandra-D/Network-Monitoring-System-SNMP"
@@ -24,9 +36,15 @@
     "desc": "Configured Pi-hole with Unbound DNS for network-wide ad/malware blocking. Set up Raspberry Pi OS, Achieved ~90% ad-blocking.",
     "image": "pihole",
     "category": "network",
+    "features": [
+      "Network-wide ad and malware blocking (~90% effectiveness)",
+      "Unbound DNS configuration for privacy",
+      "Raspberry Pi OS setup and management"
+    ],
+    "tech": ["Pi-hole", "Raspberry Pi", "DNS", "Linux"],
     "links": {
-      "view": "https://www.linkedin.com/posts/poorna-chandra-dinesh_pihole-raspberrypi-adblock-activity-7382221204763566080-2Uoq?utm_source=share&utm_medium=member_desktop&rcm=ACoAACdtZcsBxPwszKMMRCu1XnMrV_6pEheFMYw",
-      "code": "https://www.linkedin.com/posts/poorna-chandra-dinesh_pihole-raspberrypi-adblock-activity-7382221204763566080-2Uoq?utm_source=share&utm_medium=member_desktop&rcm=ACoAACdtZcsBxPwszKMMRCu1XnMrV_6pEheFMYw"
+      "view": "https://www.linkedin.com/posts/poorna-chandra-dinesh_pihole-raspberrypi-adblock-activity-7382221204763566080-2Uoq",
+      "code": "https://www.linkedin.com/posts/poorna-chandra-dinesh_pihole-raspberrypi-adblock-activity-7382221204763566080-2Uoq"
     }
   },
   {
@@ -34,9 +52,15 @@
     "desc": "Hands-on lab with Aruba S2500-48P (48 PoE ports). Configured VLANs, trunk ports, PoE setups, Aruba CLI, role-based access, and QoS.",
     "image": "aruba-switch",
     "category": "network",
+    "features": [
+      "VLAN configuration and trunk port setup",
+      "PoE power management for 48 ports",
+      "QoS policies and role-based access control"
+    ],
+    "tech": ["Aruba CLI", "Network", "VLAN", "PoE"],
     "links": {
-      "view": "https://www.linkedin.com/posts/poorna-chandra-dinesh_networking-networkengineer-aruba-activity-7369908244166733825-z4Kn?utm_source=share&utm_medium=member_desktop&rcm=ACoAACdtZcsBxPwszKMMRCu1XnMrV_6pEheFMYw",
-      "code": "https://www.linkedin.com/posts/poorna-chandra-dinesh_networking-networkengineer-aruba-activity-7369908244166733825-z4Kn?utm_source=share&utm_medium=member_desktop&rcm=ACoAACdtZcsBxPwszKMMRCu1XnMrV_6pEheFMYw"
+      "view": "https://www.linkedin.com/posts/poorna-chandra-dinesh_networking-networkengineer-aruba-activity-7369908244166733825-z4Kn",
+      "code": "https://www.linkedin.com/posts/poorna-chandra-dinesh_networking-networkengineer-aruba-activity-7369908244166733825-z4Kn"
     }
   },
   {
@@ -44,6 +68,12 @@
     "desc": "Migrated legacy PBX to Cisco VoIP using ATAs. Configured IP phones, optimized QoS for voice traffic, and maintained endpoint inventory.",
     "image": "voip-infrastructure",
     "category": "network",
+    "features": [
+      "Legacy PBX to Cisco VoIP migration",
+      "ATA (Analog Terminal Adapter) configuration and deployment",
+      "Voice traffic QoS optimization"
+    ],
+    "tech": ["Cisco", "VoIP", "Network", "QoS"],
     "links": {
       "view": "#",
       "code": "#"
@@ -54,6 +84,12 @@
     "desc": "Upgraded campus access switches and fiber uplinks. Conducted WiFi surveys, optimized AP placement. Validated Cisco configurations.",
     "image": "wifi-optimization",
     "category": "network",
+    "features": [
+      "Campus access switch upgrades and fiber uplinks",
+      "WiFi site survey and AP placement optimization",
+      "Cisco configuration validation and testing"
+    ],
+    "tech": ["Cisco", "WiFi", "Network", "Fiber"],
     "links": {
       "view": "#",
       "code": "#"

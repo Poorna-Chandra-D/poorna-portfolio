@@ -67,7 +67,23 @@
       </div>
     </div>
 <div class="image">
-    <img draggable="false" class="tilt" src="./assets/images/hero.png" alt="">
+    <div class="space-container">
+      <div class="gradient-layer-1"></div>
+      <div class="gradient-layer-2"></div>
+      <div class="orbit orbit-1"></div>
+      <div class="orbit orbit-2"></div>
+      <div class="orbit orbit-3"></div>
+      <div class="profile-glow"></div>
+      <div class="gradient-layer-3"></div>
+      <img draggable="false" class="tilt profile-img" src="./assets/images/hero.png" alt="">
+    </div>
+    <div class="open-tag">
+      <span class="dot"></span>
+      <div class="label">
+        <p>Open to 2026 New Grad</p>
+        <p>SWE and NOC</p>
+      </div>
+    </div>
 </div>
 </section>
 <!-- hero section ends -->
@@ -108,6 +124,11 @@
             </a>
         </div>
 
+        <div class="open-to-work">
+          <i class="fas fa-envelope"></i>
+          <span>Open to 2026 new-grad SWE and NOC roles</span>
+        </div>
+
     </div>
     </div>
 </section>
@@ -117,19 +138,24 @@
 <section class="skills" id="skills">
 
     <h2 class="heading"><i class="fas fa-laptop-code"></i> Skills & <span>Abilities</span></h2>
+    
+    <p class="skills-subtitle">Things I've actually used in projects, internships, and course work</p>
 
-    <div class="container">
-          <div class="row" id="skillsContainer">
+    <a href="./skills/" class="view-all-skills-btn">View All Skills</a>
 
-            <!-- <div class="bar">
-              <div class="info">
-                <img src="https://img.icons8.com/color/48/000000/adobe-xd.png"/>
-                <span>AdobeXD</span>
-              </div>
-            </div> -->
-
+    <div class="skills-carousel-wrapper">
+      <div class="skills-carousel">
+        <div class="carousel-track" id="skillsContainer1">
+          <!-- First row of skills -->
+        </div>
       </div>
-</div>
+      
+      <div class="skills-carousel carousel-reverse">
+        <div class="carousel-track carousel-track-reverse" id="skillsContainer2">
+          <!-- Second row of skills -->
+        </div>
+      </div>
+    </div>
 </section>
 <!-- skills section ends -->
 
@@ -148,9 +174,27 @@
         <img draggable="false" src="./assets/images/educat/college.jpg" alt="Clark University">
       </div>
       <div class="content">
+        <div class="edu-header-icon">
+          <i class="fas fa-university"></i>
+        </div>
         <h3>Master's degree, Computer Science</h3>
         <p>Clark University, Worcester, MA</p>
         <h4>Aug 2024 - May 2026</h4>
+        <div class="edu-coursework">
+          <p class="coursework-label">Coursework:</p>
+          <div class="coursework-grid">
+            <ul>
+              <li>Application Eng & Development</li>
+              <li>Program Structures & Algorithms</li>
+              <li>Concepts of OOP / Java</li>
+            </ul>
+            <ul>
+              <li>Data Management & Database Design</li>
+              <li>Network Structures & Cloud Computing</li>
+              <li>HPC / AI (elective)</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -159,9 +203,25 @@
         <img draggable="false" src="./assets/images/educat/collegeBach.jpg" alt="Vidyavardhaka College of Engineering">
       </div>
       <div class="content">
+        <div class="edu-header-icon">
+          <i class="fas fa-university"></i>
+        </div>
         <h3>Bachelor of Engineering (BE), Information Science and Engineering</h3>
         <p>Vidyavardhaka College of Engineering, Karnataka, India</p>
         <h4>2018 - 2022</h4>
+        <div class="edu-coursework">
+          <p class="coursework-label">Core subjects:</p>
+          <div class="coursework-grid">
+            <ul>
+              <li>Advanced Computer Algorithms</li>
+              <li>Information Technology & Computer Networks</li>
+            </ul>
+            <ul>
+              <li>Operating Systems</li>
+              <li>Data Structures</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -193,48 +253,25 @@
 <section class="work" id="work">
 
   <h2 class="heading"><i class="fas fa-laptop-code"></i> Projects <span>Made</span></h2>
+  <p class="projects-intro">Explore my portfolio projects - Software, Networking, and Cloud.</p>
+  
+  <div class="projects-meta">
+    <span id="projectsCount">Showing projects</span>
+  </div>
 
-  <div class="box-container">
+  <div class="projects-grid" id="homeProjects">
+    <!-- Projects populated by script.js -->
+  </div>
 
-    <div class="box tilt">
-      <img draggable="false" src="./assets/images/projects/portfolio1.PNG" alt="" />
-      <div class="content">
-        <div class="tag">
-        <h3 style="font-size: 1.3rem;">Portfolio Website</h3>
-        </div>
-        <div class="desc">
-          <p>Personal portfolio website. Don't need much info about it, just scroll down. You're here only!</p>
-          <div class="btns">
-            <a href="#" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="https://github.com/Poorna-Chandra-Dinesh/Portfolio-Website" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="projects-pagination" id="projectsPagination">
+    <!-- Pagination populated by script.js -->
+  </div>
 
-    <div class="box tilt">
-      <img draggable="false" src="./assets/images/projects/monitoring.PNG" alt="" />
-      <div class="content">
-        <div class="tag">
-        <h3 style="font-size: 1.3rem;">Real-Time Network Monitoring & Alerting Platform</h3>
-        </div>
-        <div class="desc">
-          <p>End-to-end network monitoring solution with real-time data collection, alerting, and interactive analytics dashboard for comprehensive infrastructure insights.</p>
-          <div class="btns">
-            <a href="#" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="#" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-</div>
-
-<div class="viewall">
-  <a href="/projects" class="btn"><span>View All</span>
-    <i class="fas fa-arrow-right"></i>
-</a>
-</div>
+  <div class="viewall">
+    <a href="/projects" class="btn"><span>View All</span>
+      <i class="fas fa-arrow-right"></i>
+  </a>
+  </div>
 
 </section>
 <!-- work project section ends -->
@@ -242,96 +279,101 @@
 <!-- experience section starts -->
 <section class="experience" id="experience">
 
-  <h2 class="heading"><i class="fas fa-briefcase"></i> Experience </h2>
-
-  <div class="timeline">
-
-    <div class="container right">
-      <div class="content">
-        <div class="tag">
-          <h2>Clark University ITS</h2>
-        </div>
-        <div class="desc">
-            <h3>Network & Telecommunications Assistant</h3>
-            <p>Sep 2025 - Present | Part-time (4 mos)</p>
-            <p style="font-size: 1.2rem; color: #2506ad; margin-top: 0.5rem; font-weight: 600;"><i class="fas fa-arrow-up"></i> Promoted from Intern</p>
-        </div>
+  <div class="experience-hero">
+    <div class="intro">
+      <p class="eyebrow">Experience</p>
+      <h1>Network-first builder, leveling up every role</h1>
+      <p class="lede">From enterprise networks to production software, each step has added ownership, reliability, and systems thinking.</p>
+      <div class="hero-meta">
+        <span class="pill">Open to Relocate</span>
+        <span class="pill warm">Open to 2026 New Grad SWE and NOC</span>
       </div>
     </div>
 
-    <div class="container left">
-      <div class="content">
-        <div class="tag">
-          <h2>Clark University</h2>
-        </div>
-        <div class="desc">
-            <h3>Network Engineering Intern</h3>
-            <p>May 2025 - Sep 2025 | Internship (5 mos)</p>
-            <p style="font-size: 1.2rem; color: #2506ad; margin-top: 0.5rem; font-weight: 600;"><i class="fas fa-arrow-up"></i> Promoted from Network Assistant</p>
-        </div>
-      </div>
+    <div class="status-card">
+      <p class="status-label">Currently</p>
+      <h3>Network & Telecommunications Assistant</h3>
+      <p class="status-org">Clark University ITS</p>
+      <p class="status-duration">Sep 2025 – Present · Part-time</p>
+      <div class="status-pill">Promoted from Intern</div>
     </div>
+  </div>
 
-    <div class="container right">
-      <div class="content">
-        <div class="tag">
-          <h2>Clark University ITS</h2>
-        </div>
-        <div class="desc">
-            <h3>Network Assistant</h3>
-            <p>Apr 2025 - May 2025 | Part-time (2 mos)</p>
-            <p style="font-size: 1.2rem; color: #2506ad; margin-top: 0.5rem; font-weight: 600;"><i class="fas fa-star"></i> Starting Position</p>
-        </div>
-      </div>
-    </div>
+  <div class="quote">
+    <span>Every milestone builds momentum—here is the path so far.</span>
+  </div>
 
-    <div class="container left">
-      <div class="content">
-        <div class="tag">
-          <h2>TEKsystems Global Services</h2>
+  <div class="exp-timeline">
+    <article class="exp-card">
+      <div class="exp-header">
+        <div>
+          <p class="company">Clark University ITS</p>
+          <h3>Network & Telecommunications Assistant</h3>
         </div>
-        <div class="desc">
-            <h3>Software Engineer</h3>
-            <p>Apr 2024 - Aug 2024 | Full-time (5 mos)</p>
-            <p style="font-size: 1.2rem; color: #2506ad; margin-top: 0.5rem; font-weight: 600;"><i class="fas fa-arrow-up"></i> Promoted</p>
-        </div>
+        <p class="period">Sep 2025 – Present · Part-time</p>
       </div>
-    </div>
+      <p class="promo">Promoted from Intern</p>
+    </article>
 
-    <div class="container right">
-      <div class="content">
-        <div class="tag">
-          <h2>TEKsystems Global Services</h2>
+    <article class="exp-card">
+      <div class="exp-header">
+        <div>
+          <p class="company">Clark University</p>
+          <h3>Network Engineering Intern</h3>
         </div>
-        <div class="desc">
-            <h3>Associate Software Engineer</h3>
-            <p>Sep 2022 - May 2024 | Full-time (1 yr 9 mos)</p>
-            <p style="font-size: 1.2rem; color: #2506ad; margin-top: 0.5rem; font-weight: 600;"><i class="fas fa-arrow-up"></i> Promoted from Technical Trainee</p>
-        </div>
+        <p class="period">May 2025 – Sep 2025 · Internship</p>
       </div>
-    </div>
+      <p class="promo">Promoted from Network Assistant</p>
+    </article>
 
-    <div class="container left">
-      <div class="content">
-        <div class="tag">
-          <h2>TEKsystems Global Services</h2>
+    <article class="exp-card">
+      <div class="exp-header">
+        <div>
+          <p class="company">Clark University ITS</p>
+          <h3>Network Assistant</h3>
         </div>
-        <div class="desc">
-            <h3>Technical Trainee</h3>
-            <p>Feb 2022 - Jun 2022 | Internship (5 mos)</p>
-            <p style="font-size: 1.2rem; color: #2506ad; margin-top: 0.5rem; font-weight: 600;"><i class="fas fa-star"></i> Starting Position</p>
-        </div>
+        <p class="period">Apr 2025 – May 2025 · Part-time</p>
       </div>
-    </div>
+      <p class="promo">Starting position</p>
+    </article>
+
+    <article class="exp-card">
+      <div class="exp-header">
+        <div>
+          <p class="company">TEKsystems Global Services</p>
+          <h3>Software Engineer</h3>
+        </div>
+        <p class="period">Apr 2024 – Aug 2024 · Full-time</p>
+      </div>
+      <p class="promo">Promoted</p>
+    </article>
+
+    <article class="exp-card">
+      <div class="exp-header">
+        <div>
+          <p class="company">TEKsystems Global Services</p>
+          <h3>Associate Software Engineer</h3>
+        </div>
+        <p class="period">Sep 2022 – May 2024 · Full-time</p>
+      </div>
+      <p class="promo">Promoted from Technical Trainee</p>
+    </article>
+
+    <article class="exp-card">
+      <div class="exp-header">
+        <div>
+          <p class="company">TEKsystems Global Services</p>
+          <h3>Technical Trainee</h3>
+        </div>
+        <p class="period">Feb 2022 – Jun 2022 · Internship</p>
+      </div>
+      <p class="promo">Starting position</p>
+    </article>
   </div>
 
   <div class="morebtn">
-    <a href="/experience" class="btn"><span>View All</span>
-      <i class="fas fa-arrow-right"></i>
-  </a>
+    <a href="/experience" class="btn"><i class="fas fa-arrow-right"></i><span>View full timeline</span></a>
   </div>
-
-</div>
 
 </section>
 <!-- experience sections ends -->
@@ -343,6 +385,23 @@
   <p class="qoute" style="text-align: center; margin-top: -1rem; margin-bottom: 2rem;">Real voices from LinkedIn connections who've worked alongside me</p>
 
   <div class="box-container" id="recommendationsContainer">
+    <div class="recommendation-box">
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <p class="recommendation-text">
+        "I’ve had the pleasure of managing Poorna and can confidently say he is one of the most dependable and high-impact professionals I’ve worked with. He joined the organization as a fresher and, through his dedication and strong learning mindset, has grown rapidly and delivered outstanding contributions to the team. I highly recommend him, and he will be a valuable asset wherever he goes."
+      </p>
+      <div class="recommendation-author">
+        <h4>Pranav Davar</h4>
+        <p>MuleSoft Ambassador | MuleSoft Bangalore Meetup Leader | Manager · January 9, 2026</p>
+      </div>
+    </div>
+    
     
     <div class="recommendation-box">
       <div class="stars">
@@ -387,11 +446,11 @@
         <i class="fas fa-star"></i>
       </div>
       <p class="recommendation-text">
-        "I wholeheartedly recommend Poorna for any professional opportunity"
+        "I have known Poorna since our college days. He has consistently demonstrated a strong enthusiasm for technology, particularly in the areas of computer engineering and network security. Poorna approaches every task assigned to him with a high level of discipline and professionalism, and he is well known for significantly exceeding expectations in his work. I confidently and positively recommend him for any software engineering or network engineering position."
       </p>
       <div class="recommendation-author">
-        <h4>Hema Naidu</h4>
-        <p>Full Stack Developer | March 2025</p>
+        <h4>Sumukh S</h4>
+        <p>Software Development Engineer | Frontend specialist | December 2025</p>
       </div>
     </div>
 
@@ -404,11 +463,11 @@
         <i class="fas fa-star"></i>
       </div>
       <p class="recommendation-text">
-        "I have known Poorna since our college days. He has consistently demonstrated a strong enthusiasm for technology, particularly in the areas of computer engineering and network security. Poorna approaches every task assigned to him with a high level of discipline and professionalism, and he is well known for significantly exceeding expectations in his work. I confidently and positively recommend him for any software engineering or network engineering position."
+        "I wholeheartedly recommend Poorna for any professional opportunity"
       </p>
       <div class="recommendation-author">
-        <h4>Sumukh S</h4>
-        <p>Software Development Engineer | Frontend specialist | December 2025</p>
+        <h4>Hema Naidu</h4>
+        <p>Full Stack Developer | March 2025</p>
       </div>
     </div>
 

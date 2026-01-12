@@ -41,64 +41,132 @@ function getProjects() {
 
 
 function showProjects(projects) {
-    let projectsContainer = document.querySelector(".work .box-container");
+    let projectsContainer = document.querySelector("#projectsContainer");
     let projectsHTML = "";
+    
     projects.forEach(project => {
+        const techStack = project.tech.map(tech => 
+            `<span class="tech-badge">${tech}</span>`
+        ).join('');
+        
+        const features = project.features.map(feature =>
+            `<li>${feature}</li>`
+        ).join('');
+        
         projectsHTML += `
-        <div class="grid-item ${project.category}">
-        <div class="box tilt" style="width: 380px; margin: 1rem">
-      <img draggable="false" src="/assets/images/projects/${project.image}.png" alt="project" />
-      <div class="content">
-        <div class="tag">
-        <h3>${project.name}</h3>
-        </div>
-        <div class="desc">
-          <p>${project.desc}</p>
-          <div class="btns">
-            <a href="${project.links.view}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>`
+        <div class="project-card">
+            <div class="project-image">
+                <img src="/assets/images/projects/${project.image}.png" alt="${project.name}" />
+                <div class="project-zoom">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">${project.name}</h3>
+                <ul class="project-features">
+                    ${features}
+                </ul>
+                <div class="project-tech">
+                    ${techStack}
+                </div>
+                <div class="project-links">
+                    <a href="${project.links.view}" target="_blank" title="View Project">
+                        <i class="fas fa-external-link-alt"></i> View
+                    </a>
+                    <a href="${project.links.code}" target="_blank" title="View Code">
+                        <i class="fas fa-code"></i> Code
+                    </a>
+                </div>
+            </div>
+        </div>`;
     });
+    
     projectsContainer.innerHTML = projectsHTML;
-
-    // vanilla tilt.js
-    // VanillaTilt.init(document.querySelectorAll(".tilt"), {
-    //     max: 20,
-    // });
-    // // vanilla tilt.js  
-
-    // /* ===== SCROLL REVEAL ANIMATION ===== */
-    // const srtop = ScrollReveal({
-    //     origin: 'bottom',
-    //     distance: '80px',
-    //     duration: 1000,
-    //     reset: true
-    // });
-
-    // /* SCROLL PROJECTS */
-    // srtop.reveal('.work .box', { interval: 200 });
-
-    // isotope filter products
-    var $grid = $('.box-container').isotope({
-        itemSelector: '.grid-item',
-        layoutMode: 'fitRows',
-        masonry: {
-            columnWidth: 200
-        }
-    });
-
-    // filter items on button click
-    $('.button-group').on('click', 'button', function () {
-        $('.button-group').find('.is-checked').removeClass('is-checked');
-        $(this).addClass('is-checked');
-        var filterValue = $(this).attr('data-filter');
-        $grid.isotope({ filter: filterValue });
-    });
+        attachProjectPointerEffects();
+        attachProjectHoverTooltip();
+        attachProjectClickZoom();
 }
+
+    function attachProjectPointerEffects() {
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--px', `${x}px`);
+                card.style.setProperty('--py', `${y}px`);
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.removeProperty('--px');
+                card.style.removeProperty('--py');
+            });
+        });
+    }
+
+    function getOrCreateCursorTooltip() {
+        let tooltip = document.querySelector('.cursor-tooltip');
+        if (!tooltip) {
+            tooltip = document.createElement('div');
+            tooltip.className = 'cursor-tooltip';
+            tooltip.innerHTML = '<span class="avatar"></span><span class="label"></span>';
+            document.body.appendChild(tooltip);
+        }
+        return tooltip;
+    }
+
+    function attachProjectHoverTooltip() {
+        const tooltip = getOrCreateCursorTooltip();
+        const cards = document.querySelectorAll('.project-card');
+        const show = () => { tooltip.style.display = 'inline-flex'; };
+        const hide = () => { tooltip.style.display = 'none'; };
+        const setContent = (card) => {
+            const titleEl = card.querySelector('.project-title');
+            const name = titleEl ? titleEl.textContent.trim() : 'Project';
+            const short = name.length > 22 ? name.slice(0, 22).trim() + '…' : name;
+            const avatar = name.charAt(0).toUpperCase();
+            tooltip.querySelector('.avatar').textContent = avatar;
+            tooltip.querySelector('.label').textContent = short;
+        };
+        const move = (e) => {
+            const offsetX = 16;
+            const offsetY = 20;
+            let x = e.clientX + offsetX;
+            let y = e.clientY + offsetY;
+            const rect = tooltip.getBoundingClientRect();
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+            if (x + rect.width > vw - 8) x = vw - rect.width - 8;
+            if (y + rect.height > vh - 8) y = vh - rect.height - 8;
+            tooltip.style.left = x + 'px';
+            tooltip.style.top = y + 'px';
+        };
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                setContent(card);
+                show();
+            });
+            card.addEventListener('mousemove', move);
+            card.addEventListener('mouseleave', hide);
+        });
+    }
+
+    function attachProjectClickZoom() {
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            const add = () => card.classList.add('is-clicked');
+            const remove = () => card.classList.remove('is-clicked');
+            card.addEventListener('mousedown', add);
+            card.addEventListener('mouseup', () => {
+                setTimeout(remove, 120);
+            });
+            card.addEventListener('mouseleave', remove);
+            card.addEventListener('touchstart', add, { passive: true });
+            card.addEventListener('touchend', () => {
+                setTimeout(remove, 160);
+            }, { passive: true });
+        });
+    }
 
 getProjects().then(data => {
     showProjects(data);

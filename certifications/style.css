@@ -1,9 +1,31 @@
-/* Page-specific tweaks to align with Projects style */
-/* Prevent header overlap so heading is visible */
+/* Certifications page tweaks for the neon theme */
 #certifications {
-  padding-top: 8rem; /* header height (6.5rem) + breathing space */
+  padding-top: 9rem;
 }
 
 #certifications .box-container {
-  margin-top: 2rem;
+  margin-top: 2.4rem;
+}
+
+#certifications .box-container .box {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: var(--glow);
+}
+
+#certifications .box-container .box .content .tag {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  color: #fff;
+}
+
+#certifications .box-container .box .desc p,
+#certifications .box-container .box .desc strong {
+  color: #d6dcee;
+  text-transform: none;
+}
+
+#certifications .credential-id {
+  font-size: 1.3rem;
+  word-break: break-word;
+  color: var(--muted);
 }
