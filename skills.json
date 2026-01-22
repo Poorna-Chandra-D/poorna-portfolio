@@ -12,6 +12,18 @@
         "icon": "https://img.icons8.com/color/48/000000/python--v1.png"
     },
     {
+        "name": "PySpark",
+        "icon": "https://img.icons8.com/color/48/000000/apache-spark.png"
+    },
+    {
+        "name": "Azure Databricks",
+        "icon": "https://img.icons8.com/color/48/000000/azure.png"
+    },
+    {
+        "name": "Data Engineering",
+        "icon": "https://img.icons8.com/color/48/000000/data-configuration.png"
+    },
+    {
         "name": "CI/CD Pipelines",
         "icon": "https://img.icons8.com/color/48/000000/workflow.png"
     },
