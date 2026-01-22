@@ -71,7 +71,7 @@ document.addEventListener('visibilitychange',
 
 // <!-- typed js effect starts -->
 var typed = new Typed(".typing-text", {
-    strings: ["Software Engineer", "Network Engineer", "Application Developer", "Network Software Engineer", "Site Reliability Engineer"],
+    strings: ["Software Engineer", "Data Engineer", "Network Engineer", "Application Developer", "Network Software Engineer", "Site Reliability Engineer"],
     loop: true,
     typeSpeed: 50,
     backSpeed: 25,
