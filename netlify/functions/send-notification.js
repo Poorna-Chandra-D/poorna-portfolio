@@ -102,6 +102,7 @@ exports.handler = async (event, context) => {
 
         const now = Date.now();
         const visitCooldownMs = parseNumberEnv(process.env.NOTIFY_COOLDOWN_MINUTES, 30) * 60 * 1000;
+        const visitsBeforeCooldown = parseNumberEnv(process.env.NOTIFY_VISITS_BEFORE_COOLDOWN, 3);
         const rateWindowMs = parseNumberEnv(process.env.NOTIFY_RATE_WINDOW_MINUTES, 10) * 60 * 1000;
         const maxPerWindow = parseNumberEnv(process.env.NOTIFY_MAX_PER_WINDOW, 5);
         const dedupeMs = parseNumberEnv(process.env.NOTIFY_DEDUPE_SECONDS, 120) * 1000;
@@ -109,7 +110,7 @@ exports.handler = async (event, context) => {
         pruneMapByAge(ipState, now, Math.max(visitCooldownMs, rateWindowMs));
         pruneMapByAge(recentFingerprints, now, dedupeMs);
 
-        const fingerprint = `${clientIp}|${data.pageUrl || ''}|${data.deviceType || ''}|${data.browser || ''}|${data.guestbook?.name || ''}`;
+        const fingerprint = `${clientIp}|${data.pageUrl || ''}|${data.deviceType || ''}|${data.browser || ''}|${data.timestamp || ''}|${data.guestbook?.name || ''}`;
         const lastFingerprintSeen = recentFingerprints.get(fingerprint);
         if (!forceNotify && lastFingerprintSeen && now - lastFingerprintSeen < dedupeMs) {
             return {
@@ -119,16 +120,27 @@ exports.handler = async (event, context) => {
         }
         recentFingerprints.set(fingerprint, now);
 
-        const current = ipState.get(clientIp) || { windowStart: now, count: 0, lastSeen: 0 };
+        const current = ipState.get(clientIp) || {
+            windowStart: now,
+            count: 0,
+            lastSeen: 0,
+            burstWindowStart: now,
+            burstCount: 0
+        };
         if (now - current.windowStart > rateWindowMs) {
             current.windowStart = now;
             current.count = 0;
         }
 
-        if (!isGuestbookEvent && !forceNotify && current.lastSeen && now - current.lastSeen < visitCooldownMs) {
+        if (now - current.burstWindowStart > visitCooldownMs) {
+            current.burstWindowStart = now;
+            current.burstCount = 0;
+        }
+
+        if (!isGuestbookEvent && !forceNotify && current.burstCount >= visitsBeforeCooldown) {
             return {
                 statusCode: 202,
-                body: JSON.stringify({ skipped: true, reason: 'Cooldown active for IP' })
+                body: JSON.stringify({ skipped: true, reason: 'Cooldown active for IP (visit limit reached)' })
             };
         }
 
@@ -141,6 +153,11 @@ exports.handler = async (event, context) => {
 
         current.count += 1;
         current.lastSeen = now;
+
+        if (!isGuestbookEvent && !forceNotify) {
+            current.burstCount += 1;
+        }
+
         ipState.set(clientIp, current);
         
         // Get credentials from Netlify environment variables

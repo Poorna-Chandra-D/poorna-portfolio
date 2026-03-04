@@ -55,7 +55,7 @@
   }
 
   section {
-    min-height: auto;
+    min-height: 100vh;
     padding: 2rem 8%;
   }
 
@@ -171,17 +171,16 @@
   /* navbar ends */
 
   .experience {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 9rem;
     position: relative;
   }
 
   .experience-hero {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
-    gap: 2rem;
+    gap: 3rem;
     align-items: center;
-    margin-bottom: 1.8rem;
+    margin-bottom: 2.8rem;
   }
 
   .intro h1 {
@@ -304,7 +303,7 @@
     text-align: left;
     font-size: 1.5rem;
     color: var(--muted);
-    margin: 0.8rem 0 1.8rem;
+    margin: 1rem 0 2.4rem;
     letter-spacing: 0.02em;
   }
 
@@ -331,8 +330,8 @@
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 1.2rem;
-    padding: 1.6rem 2rem 1.4rem 2.4rem;
-    margin-bottom: 1.2rem;
+    padding: 1.8rem 2.2rem 1.6rem 2.6rem;
+    margin-bottom: 1.6rem;
     box-shadow: var(--glow);
     overflow: hidden;
   }

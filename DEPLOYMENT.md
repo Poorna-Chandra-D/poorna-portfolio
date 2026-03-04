@@ -32,6 +32,7 @@ After deployment, add your credentials securely:
    | `TELEGRAM_CHAT_ID` | `Add yours` |
    | `ALLOWED_ORIGINS` | `https://your-site.netlify.app,https://yourdomain.com` |
    | `NOTIFY_COOLDOWN_MINUTES` | `30` |
+   | `NOTIFY_VISITS_BEFORE_COOLDOWN` | `3` |
    | `NOTIFY_RATE_WINDOW_MINUTES` | `10` |
    | `NOTIFY_MAX_PER_WINDOW` | `5` |
    | `NOTIFY_DEDUPE_SECONDS` | `120` |
