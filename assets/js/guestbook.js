@@ -30,24 +30,27 @@
             `;
 
             document.body.appendChild(modal);
-            sessionStorage.setItem(GUESTBOOK_SHOWN_KEY, 'true');
-
-            // Auto-close modal after 5 seconds
-            setTimeout(() => {
-                if (document.getElementById('guestbook-modal')) {
-                    closeModal();
-                }
-            }, 5000);
 
             // Handle form submission
             const form = document.getElementById('guestbook-form');
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
+                const nameValue = document.getElementById('visitor-name').value.trim();
+                const emailValue = document.getElementById('visitor-email').value.trim();
+                const linkedInValue = document.getElementById('visitor-linkedin').value.trim();
+
                 const visitorData = {
-                    name: document.getElementById('visitor-name').value || null,
-                    email: document.getElementById('visitor-email').value || null,
-                    linkedIn: document.getElementById('visitor-linkedin').value || null
+                    name: nameValue || null,
+                    email: emailValue || null,
+                    linkedIn: linkedInValue || null
                 };
+
+                // Ensure guestbook sign always carries at least one field.
+                if (!visitorData.name && !visitorData.email && !visitorData.linkedIn) {
+                    visitorData.name = 'Anonymous Visitor';
+                }
+
+                sessionStorage.setItem(GUESTBOOK_SHOWN_KEY, 'true');
                 closeModal();
                 
                 // Store globally and trigger guestbook update notification
@@ -59,10 +62,16 @@
             });
 
             // Handle close button
-            document.querySelector('.guestbook-close').addEventListener('click', closeModal);
+            document.querySelector('.guestbook-close').addEventListener('click', () => {
+                sessionStorage.setItem(GUESTBOOK_SHOWN_KEY, 'true');
+                closeModal();
+            });
             
             // Handle "No thanks" button
-            document.querySelector('.guestbook-skip').addEventListener('click', closeModal);
+            document.querySelector('.guestbook-skip').addEventListener('click', () => {
+                sessionStorage.setItem(GUESTBOOK_SHOWN_KEY, 'true');
+                closeModal();
+            });
 
             // Don't close on overlay click since it's transparent now
         }, 3000);
