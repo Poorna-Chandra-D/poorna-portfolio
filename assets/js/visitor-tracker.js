@@ -109,6 +109,8 @@
             console.log('📡 Function response:', result);
             if (result.success) {
                 console.log('✅ Visitor notification sent successfully');
+            } else if (result.skipped) {
+                console.log(`ℹ️ Notification skipped: ${result.reason || 'Rule matched'}`);
             } else {
                 console.warn('⚠️ Notification failed:', result.error || result);
             }

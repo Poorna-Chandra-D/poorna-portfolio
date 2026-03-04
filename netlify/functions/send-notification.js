@@ -17,6 +17,27 @@ function parseListEnv(value = '') {
         .filter(Boolean);
 }
 
+function normalizeOrigin(input = '') {
+    if (!input) return '';
+
+    try {
+        const parsed = new URL(input);
+        return parsed.origin.toLowerCase();
+    } catch (error) {
+        return String(input).replace(/\/$/, '').toLowerCase();
+    }
+}
+
+function isAllowedOrigin(originValue, allowlist) {
+    const normalizedValue = normalizeOrigin(originValue);
+    if (!normalizedValue) return false;
+
+    return allowlist.some(item => {
+        const normalizedItem = normalizeOrigin(item);
+        return normalizedItem && normalizedValue === normalizedItem;
+    });
+}
+
 function isLikelyBot(userAgent = '') {
     return /bot|crawler|spider|slurp|curl|wget|python|java|headless|monitor|uptime/i.test(userAgent);
 }
@@ -50,9 +71,10 @@ exports.handler = async (event, context) => {
 
         // Optional allowlist: comma-separated domains like https://example.com,https://www.example.com
         const allowedOrigins = parseListEnv(process.env.ALLOWED_ORIGINS);
-        if (allowedOrigins.length > 0) {
-            const isOriginAllowed = allowedOrigins.some(item => origin.startsWith(item));
-            const isRefererAllowed = allowedOrigins.some(item => referer.startsWith(item));
+        const hasOriginSignals = !!(origin || referer);
+        if (allowedOrigins.length > 0 && hasOriginSignals) {
+            const isOriginAllowed = isAllowedOrigin(origin, allowedOrigins);
+            const isRefererAllowed = isAllowedOrigin(referer, allowedOrigins);
             if (!isOriginAllowed && !isRefererAllowed) {
                 return {
                     statusCode: 403,

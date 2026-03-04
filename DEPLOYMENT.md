@@ -36,6 +36,9 @@ After deployment, add your credentials securely:
    | `NOTIFY_MAX_PER_WINDOW` | `5` |
    | `NOTIFY_DEDUPE_SECONDS` | `120` |
 
+   `ALLOWED_ORIGINS` must exactly match your site origins. If you use both root and www domains, include both values.
+   Example: `https://yourdomain.com,https://www.yourdomain.com,https://your-site.netlify.app`
+
 4. Click **"Save"**
 5. Go to **Deploys** → **"Trigger deploy"** → **"Clear cache and deploy site"**
 
