@@ -90,6 +90,25 @@
         return 'Desktop';
     }
 
+    function createFallbackVisitorData() {
+        return {
+            timestamp: new Date().toISOString(),
+            city: 'Unknown',
+            region: 'Unknown',
+            country: 'Unknown',
+            ip: 'Unknown',
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Unknown',
+            browser: getBrowserInfo(),
+            referrer: document.referrer || 'direct',
+            userAgent: navigator.userAgent,
+            language: navigator.language || 'Unknown',
+            screenResolution: `${window.innerWidth}x${window.innerHeight}`,
+            deviceType: getDeviceType(),
+            pageUrl: window.location.href,
+            guestbook: null
+        };
+    }
+
     function sendTrackerData(data) {
         // Use Netlify Function for secure server-side notifications
         if (CONFIG.useNetlifyFunction) {
@@ -252,12 +271,13 @@ IP: ${data.ip}
         
         // Get the last tracked visitor data from localStorage
         const visitors = JSON.parse(localStorage.getItem('visitors')) || [];
-        if (visitors.length > 0) {
-            const lastVisitor = visitors[visitors.length - 1];
-            // Add guestbook data
-            lastVisitor.guestbook = event.detail;
-            // Send notification with guestbook info
-            sendTrackerData(lastVisitor);
-        }
+        const lastVisitor = visitors.length > 0
+            ? visitors[visitors.length - 1]
+            : createFallbackVisitorData();
+
+        // Add guestbook data
+        lastVisitor.guestbook = event.detail;
+        // Send notification with guestbook info
+        sendTrackerData(lastVisitor);
     });
 })();

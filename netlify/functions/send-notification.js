@@ -51,6 +51,15 @@ function pruneMapByAge(map, now, maxAgeMs) {
     }
 }
 
+function hasGuestbookData(guestbook) {
+    if (!guestbook || typeof guestbook !== 'object') {
+        return false;
+    }
+
+    return ['name', 'email', 'linkedIn']
+        .some(key => String(guestbook[key] || '').trim().length > 0);
+}
+
 exports.handler = async (event, context) => {
     // Only allow POST requests
     if (event.httpMethod !== 'POST') {
@@ -67,7 +76,7 @@ exports.handler = async (event, context) => {
         const referer = getHeader(headers, 'referer');
         const userAgent = getHeader(headers, 'user-agent') || data.userAgent || '';
         const clientIp = getHeader(headers, 'x-nf-client-connection-ip') || data.ip || 'unknown-ip';
-        const isGuestbookEvent = !!(data.guestbook && data.guestbook.name);
+        const isGuestbookEvent = hasGuestbookData(data.guestbook);
 
         // Optional allowlist: comma-separated domains like https://example.com,https://www.example.com
         const allowedOrigins = parseListEnv(process.env.ALLOWED_ORIGINS);
