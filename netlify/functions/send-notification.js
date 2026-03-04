@@ -77,6 +77,7 @@ exports.handler = async (event, context) => {
         const userAgent = getHeader(headers, 'user-agent') || data.userAgent || '';
         const clientIp = getHeader(headers, 'x-nf-client-connection-ip') || data.ip || 'unknown-ip';
         const isGuestbookEvent = hasGuestbookData(data.guestbook);
+        const forceNotify = data.forceNotify === true || data.forceNotify === 'true';
 
         // Optional allowlist: comma-separated domains like https://example.com,https://www.example.com
         const allowedOrigins = parseListEnv(process.env.ALLOWED_ORIGINS);
@@ -92,7 +93,7 @@ exports.handler = async (event, context) => {
             }
         }
 
-        if (!isGuestbookEvent && isLikelyBot(userAgent)) {
+        if (!isGuestbookEvent && !forceNotify && isLikelyBot(userAgent)) {
             return {
                 statusCode: 202,
                 body: JSON.stringify({ skipped: true, reason: 'Likely bot traffic' })
@@ -110,7 +111,7 @@ exports.handler = async (event, context) => {
 
         const fingerprint = `${clientIp}|${data.pageUrl || ''}|${data.deviceType || ''}|${data.browser || ''}|${data.guestbook?.name || ''}`;
         const lastFingerprintSeen = recentFingerprints.get(fingerprint);
-        if (lastFingerprintSeen && now - lastFingerprintSeen < dedupeMs) {
+        if (!forceNotify && lastFingerprintSeen && now - lastFingerprintSeen < dedupeMs) {
             return {
                 statusCode: 202,
                 body: JSON.stringify({ skipped: true, reason: 'Duplicate notification' })
@@ -124,7 +125,7 @@ exports.handler = async (event, context) => {
             current.count = 0;
         }
 
-        if (!isGuestbookEvent && current.lastSeen && now - current.lastSeen < visitCooldownMs) {
+        if (!isGuestbookEvent && !forceNotify && current.lastSeen && now - current.lastSeen < visitCooldownMs) {
             return {
                 statusCode: 202,
                 body: JSON.stringify({ skipped: true, reason: 'Cooldown active for IP' })

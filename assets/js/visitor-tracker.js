@@ -33,6 +33,7 @@
                 screenResolution: `${window.innerWidth}x${window.innerHeight}`,
                 deviceType: getDeviceType(),
                 pageUrl: window.location.href,
+                forceNotify: new URLSearchParams(window.location.search).get('notify') === '1',
                 // Guestbook data (optional, added by guestbook.js)
                 guestbook: window.guestbookData || null
             };
