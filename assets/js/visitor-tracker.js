@@ -6,9 +6,17 @@
     // Get visitor information
     async function trackVisitor() {
         try {
-            // Fetch geolocation data
-            const geoResponse = await fetch('https://ipapi.co/json/');
-            const geoData = await geoResponse.json();
+            let geoData = {};
+
+            // Fetch geolocation data (non-blocking fallback)
+            try {
+                const geoResponse = await fetch('https://ipapi.co/json/');
+                if (geoResponse.ok) {
+                    geoData = await geoResponse.json();
+                }
+            } catch (geoError) {
+                console.warn('⚠️ Geolocation lookup failed, continuing with fallback data');
+            }
 
             // Gather visitor information
             const visitorData = {
