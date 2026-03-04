@@ -30,9 +30,24 @@ After deployment, add your credentials securely:
    |-----|-------|
    | `TELEGRAM_BOT_TOKEN` | `Add yours` |
    | `TELEGRAM_CHAT_ID` | `Add yours` |
+   | `ALLOWED_ORIGINS` | `https://your-site.netlify.app,https://yourdomain.com` |
+   | `NOTIFY_COOLDOWN_MINUTES` | `30` |
+   | `NOTIFY_RATE_WINDOW_MINUTES` | `10` |
+   | `NOTIFY_MAX_PER_WINDOW` | `5` |
+   | `NOTIFY_DEDUPE_SECONDS` | `120` |
 
 4. Click **"Save"**
 5. Go to **Deploys** → **"Trigger deploy"** → **"Clear cache and deploy site"**
+
+### 🚨 If You Suspect Telegram Token Leak
+
+1. Open Telegram and message **@BotFather**
+2. Run `/revoke` for your bot to invalidate the old token
+3. Run `/token` to generate a new token
+4. Update `TELEGRAM_BOT_TOKEN` in Netlify immediately
+5. Trigger a fresh deploy
+
+Until the token is rotated, attackers can send messages directly to your bot even if your website code is fixed.
 
 ### Step 4: Test Your Deployment
 
@@ -76,6 +91,11 @@ For local testing with credentials:
 - Check Netlify function logs
 - Ensure you triggered a new deploy after adding env vars
 - Test the function directly: `yoursite.netlify.app/.netlify/functions/send-notification`
+
+**Still getting spam?**
+- Confirm token was rotated in BotFather
+- Ensure `ALLOWED_ORIGINS` exactly matches your live domain(s)
+- Increase `NOTIFY_COOLDOWN_MINUTES` and reduce `NOTIFY_MAX_PER_WINDOW`
 
 ---
 

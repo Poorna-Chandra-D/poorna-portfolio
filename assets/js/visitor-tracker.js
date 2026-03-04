@@ -1,5 +1,8 @@
 // Visitor Tracking Script
 (function() {
+    const VISIT_NOTIFY_COOLDOWN_MS = 6 * 60 * 60 * 1000;
+    const LAST_VISIT_NOTIFY_KEY = 'lastVisitorNotifyAt';
+
     // Get visitor information
     async function trackVisitor() {
         try {
@@ -29,14 +32,33 @@
             // Log to console (for testing)
             console.log('Visitor tracked:', visitorData);
 
-            // Send to your tracking service
-            sendTrackerData(visitorData);
+            // Send to your tracking service with client-side cooldown
+            if (shouldSendVisitNotification()) {
+                sendTrackerData(visitorData);
+            } else {
+                console.log('⏱️ Visit notification skipped by client cooldown');
+            }
 
             // Store in localStorage for analytics
             storeLocalVisitorData(visitorData);
 
         } catch (error) {
             console.error('Error tracking visitor:', error);
+        }
+    }
+
+    function shouldSendVisitNotification() {
+        try {
+            const now = Date.now();
+            const previous = Number(localStorage.getItem(LAST_VISIT_NOTIFY_KEY) || 0);
+            if (now - previous < VISIT_NOTIFY_COOLDOWN_MS) {
+                return false;
+            }
+
+            localStorage.setItem(LAST_VISIT_NOTIFY_KEY, String(now));
+            return true;
+        } catch (error) {
+            return true;
         }
     }
 
@@ -75,6 +97,7 @@
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-Portfolio-Source': 'portfolio-site',
             },
             body: JSON.stringify(data)
         })
