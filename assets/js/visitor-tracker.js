@@ -1,6 +1,6 @@
 // Visitor Tracking Script
 (function() {
-    const VISIT_NOTIFY_COOLDOWN_MS = 6 * 60 * 60 * 1000;
+    const VISIT_NOTIFY_COOLDOWN_MS = 10 * 60 * 1000;
     const LAST_VISIT_NOTIFY_KEY = 'lastVisitorNotifyAt';
 
     // Get visitor information
@@ -42,7 +42,7 @@
 
             // Send to your tracking service with client-side cooldown
             if (shouldSendVisitNotification()) {
-                sendTrackerData(visitorData);
+                sendTrackerData(visitorData, { isVisitEvent: true });
             } else {
                 console.log('⏱️ Visit notification skipped by client cooldown');
             }
@@ -62,11 +62,17 @@
             if (now - previous < VISIT_NOTIFY_COOLDOWN_MS) {
                 return false;
             }
-
-            localStorage.setItem(LAST_VISIT_NOTIFY_KEY, String(now));
             return true;
         } catch (error) {
             return true;
+        }
+    }
+
+    function markVisitNotificationSent() {
+        try {
+            localStorage.setItem(LAST_VISIT_NOTIFY_KEY, String(Date.now()));
+        } catch (error) {
+            // Ignore storage errors
         }
     }
 
@@ -109,17 +115,17 @@
         };
     }
 
-    function sendTrackerData(data) {
+    function sendTrackerData(data, options = {}) {
         // Use Netlify Function for secure server-side notifications
         if (CONFIG.useNetlifyFunction) {
-            sendViaNetlifyFunction(data);
+            sendViaNetlifyFunction(data, options);
         } else {
             // Fallback to direct methods (for local testing)
             sendToTelegram(data);
         }
     }
 
-    function sendViaNetlifyFunction(data) {
+    function sendViaNetlifyFunction(data, options = {}) {
         fetch(CONFIG.netlifyFunctionUrl, {
             method: 'POST',
             headers: {
@@ -135,8 +141,14 @@
         .then(result => {
             console.log('📡 Function response:', result);
             if (result.success) {
+                if (options.isVisitEvent) {
+                    markVisitNotificationSent();
+                }
                 console.log('✅ Visitor notification sent successfully');
             } else if (result.skipped) {
+                if (options.isVisitEvent) {
+                    markVisitNotificationSent();
+                }
                 console.log(`ℹ️ Notification skipped: ${result.reason || 'Rule matched'}`);
             } else {
                 console.warn('⚠️ Notification failed:', result.error || result);
@@ -254,8 +266,14 @@ IP: ${data.ip}
         if (visitors.length > 10) {
             visitors = visitors.slice(-10);
         }
+                        if (options.isVisitEvent) {
+                            markVisitNotificationSent();
+                        }
         
         localStorage.setItem('visitors', JSON.stringify(visitors));
+                        if (options.isVisitEvent) {
+                            markVisitNotificationSent();
+                        }
     }
 
     // Initialize tracking when page loads
